@@ -1,0 +1,7 @@
+---
+# tasks file for ansible-role-redis-example
+- name: Install Redis Server
+  block:
+    - name: Install redis-server on Ubuntu
+      include_tasks: ubuntu.yaml
+      when: ansible_facts['distribution'] == 'Ubuntu'
