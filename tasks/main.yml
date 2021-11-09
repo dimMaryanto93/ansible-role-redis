@@ -1,5 +1,11 @@
 ---
 # tasks file for ansible-role-redis-example
+- name: Firewall setting for redis
+  block:
+    - name: Allow port on ubuntu
+      include_tasks: ufw-cmd.yaml
+      when: ansible_facts['distribution'] == 'Ubuntu'
+
 - name: Install Redis Server
   block:
     - name: Install redis-server on Ubuntu
